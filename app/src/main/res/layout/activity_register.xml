@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.stc.attendance.RegisterActivity">
+
+    <TextView
+        android:id="@+id/crtpro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="Create profile"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp" />
+    <EditText
+        android:id="@+id/enter_name"
+        android:hint="Enter your full name"
+        android:layout_below="@+id/crtpro"
+        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:singleLine="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:autofillHints=""
+        tools:ignore="TextFields" />
+    <EditText
+        android:id="@+id/enter_branch"
+        android:hint="Enter your branch"
+        android:layout_below="@+id/enter_name"
+        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:singleLine="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:autofillHints=""
+        tools:ignore="TextFields" />
+    <EditText
+        android:id="@+id/enter_email"
+        android:hint="Enter your email"
+        android:layout_below="@+id/enter_branch"
+        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:singleLine="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:autofillHints=""
+        tools:ignore="TextFields" />
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/enter_roll_layout"
+        android:layout_below="@+id/enter_email"
+        android:background="@drawable/border"
+        android:orientation="horizontal">
+        <Spinner
+            android:id="@+id/enter_roll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:spinnerMode="dropdown" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_down"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingRight="10dp"/>
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/enter_div"
+        android:hint="Division"
+        android:layout_below="@+id/enter_roll_layout"
+        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:singleLine="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:autofillHints=""
+        tools:ignore="TextFields" />
+
+    <EditText
+        android:id="@+id/enter_password"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_below="@+id/enter_div"
+        android:singleLine="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:hint="Password"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/enter_cpassword"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:singleLine="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:layout_below="@id/enter_password"
+        android:hint="Confirm password"
+        android:autofillHints="" />
+
+    <Button
+        android:id="@+id/signup_button"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Sign up"
+        android:background="@drawable/button_background_color"
+        android:layout_below="@id/enter_cpassword"
+        android:textColor="#FFFFFF"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="15dp"/>
+
+</RelativeLayout>
