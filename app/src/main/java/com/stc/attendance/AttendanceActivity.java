@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.AssetFileDescriptor;
@@ -45,12 +46,16 @@ import com.google.mlkit.vision.face.Face;
 import com.google.mlkit.vision.face.FaceDetection;
 import com.google.mlkit.vision.face.FaceDetector;
 import com.google.mlkit.vision.face.FaceDetectorOptions;
+import com.stc.attendance.api.ApiService;
+import com.stc.attendance.model.ChamCong;
+import com.stc.attendance.model.TaiKhoan;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.view.PreviewView;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.LifecycleOwner;
 
+import android.util.Log;
 import android.util.Pair;
 import android.util.Size;
 import android.view.View;
@@ -65,18 +70,25 @@ import org.tensorflow.lite.Interpreter;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.MappedByteBuffer;
 import java.nio.ReadOnlyBufferException;
 import java.nio.channels.FileChannel;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+import java.time.LocalDate;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AttendanceActivity extends AppCompatActivity {
     FaceDetector detector;
@@ -100,11 +112,15 @@ public class AttendanceActivity extends AppCompatActivity {
     float IMAGE_MEAN = 128.0f;
     float IMAGE_STD = 128.0f;
     int OUTPUT_SIZE=192; //Output size of model
+
     private static int SELECT_PICTURE = 1;
     ProcessCameraProvider cameraProvider;
     private static final int MY_CAMERA_REQUEST_CODE = 100;
 
     String modelFile="mobile_face_net.tflite"; //model name
+
+
+    // Cham cong init
 
     private HashMap<String, SimilarityClassifier.Recognition> registered = new HashMap<>(); //saved Faces
     @SuppressLint("MissingInflatedId")
@@ -131,11 +147,12 @@ public class AttendanceActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 //Cham con o day
-                String name = reco_name.toString();
+
                 Toast.makeText(AttendanceActivity.this, fin, Toast.LENGTH_SHORT).show();
+
+                AddChamCong();
             }
         });
-
 
         camera_switch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,7 +167,6 @@ public class AttendanceActivity extends AppCompatActivity {
                 }
                 cameraProvider.unbindAll();
                 cameraBind();
-
             }
         });
         //Load model
@@ -167,8 +183,53 @@ public class AttendanceActivity extends AppCompatActivity {
         detector = FaceDetection.getClient(highAccuracyOpts);
 
         cameraBind();
-
     }
+
+    private void AddChamCong()
+    {
+        int begin = fin.length() - 8;
+
+        String manhanvien = fin.substring(begin).trim();
+        Toast.makeText(getApplicationContext(), "So 1:" + manhanvien, Toast.LENGTH_SHORT).show();
+        String tennhanvien = fin.substring(0, begin - 1).trim();
+        Toast.makeText(getApplicationContext(), "ten: " + tennhanvien, Toast.LENGTH_SHORT).show();
+        Date time = new Date();
+//
+//        Log.e("time: ",  time + "");
+//        Toast.makeText(getApplicationContext(), "dienthanhnguyen: " + time, Toast.LENGTH_SHORT).show();
+
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            time = LocalDateTime.now();
+//        }
+
+        ChamCong chamCong = new ChamCong();
+        chamCong.setMaNhanVien(manhanvien);
+        chamCong.setTen(tennhanvien);
+        chamCong.setNgayChamCong(time);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            chamCong.setNgayChamCong(LocalDateTime.parse("2018-11-03T12:45:30"));
+//        }
+
+
+        ApiService.apiService.createChamCong(chamCong)
+                .enqueue(new Callback<ChamCong>() {
+                    @Override
+                    public void onResponse(Call<ChamCong> call, Response<ChamCong> response) {
+                        ChamCong chamCong1 = response.body();
+                        Intent intent = new Intent(AttendanceActivity.this, ProfileActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("Info", (Serializable) chamCong1);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                    @Override
+                    public void onFailure(Call<ChamCong> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(), "Thất bại", Toast.LENGTH_SHORT).show();
+                        call.cancel();
+                    }
+                });
+    }
+
 
     private MappedByteBuffer loadModelFile(Activity activity, String MODEL_FILE) throws IOException {
         AssetFileDescriptor fileDescriptor = activity.getAssets().openFd(MODEL_FILE);

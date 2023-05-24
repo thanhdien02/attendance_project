@@ -1,7 +1,13 @@
 package com.stc.attendance.model;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
+
 
 public class ChamCong implements Serializable {
 
@@ -14,6 +20,8 @@ public class ChamCong implements Serializable {
         this.maNhanVien = maNhanVien;
         this.ten = ten;
         this.ngayChamCong = ngayChamCong;
+    }
+    public ChamCong() {
     }
     public String getId() {
         return id;

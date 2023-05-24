@@ -20,10 +20,10 @@ public interface ApiService {
     // http://localhost:8080/rest/tai-khoan
 
     Gson gson = new GsonBuilder()
-            .setDateFormat("yyyy-MM-dd HH:mm:ss")
+            .setDateFormat("yyyy-MM-dd")
             .create();
     ApiService apiService = new Retrofit.Builder()
-            .baseUrl("http://192.168.0.92:8080/rest/")
+            .baseUrl("http://192.168.1.2:8080/rest/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiService.class);

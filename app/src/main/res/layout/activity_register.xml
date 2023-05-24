@@ -7,6 +7,7 @@
     tools:context="com.stc.attendance.RegisterActivity">
 
     <TextView
+        android:layout_marginTop="30dp"
         android:id="@+id/crtpro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,12 +15,12 @@
         android:gravity="center"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:text="Create profile"
+        android:text="Thông tin nhân viên"
         android:textColor="@color/colorPrimary"
         android:textSize="30sp" />
     <EditText
         android:id="@+id/enter_name"
-        android:hint="Enter your full name"
+        android:hint="Họ và Tên"
         android:layout_below="@+id/crtpro"
         android:layout_height="wrap_content"
         android:layout_width="300dp"
@@ -29,8 +30,8 @@
         android:autofillHints=""
         tools:ignore="TextFields" />
     <EditText
-        android:id="@+id/enter_branch"
-        android:hint="Enter your branch"
+        android:id="@+id/enter_manv"
+        android:hint="Mã nhân viên"
         android:layout_below="@+id/enter_name"
         android:layout_height="wrap_content"
         android:layout_width="300dp"
@@ -41,8 +42,8 @@
         tools:ignore="TextFields" />
     <EditText
         android:id="@+id/enter_email"
-        android:hint="Enter your email"
-        android:layout_below="@+id/enter_branch"
+        android:hint="Email"
+        android:layout_below="@+id/enter_manv"
         android:layout_height="wrap_content"
         android:layout_width="300dp"
         android:singleLine="true"
@@ -50,48 +51,18 @@
         android:layout_marginTop="25dp"
         android:autofillHints=""
         tools:ignore="TextFields" />
-    <RelativeLayout
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/enter_roll_layout"
-        android:layout_below="@+id/enter_email"
-        android:background="@drawable/border"
-        android:orientation="horizontal">
-        <Spinner
-            android:id="@+id/enter_roll"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:background="@android:color/transparent"
-            android:gravity="center"
-            android:layout_marginLeft="5dp"
-            android:spinnerMode="dropdown" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_down"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:paddingRight="10dp"/>
 
-    </RelativeLayout>
 
     <EditText
-        android:id="@+id/enter_div"
-        android:hint="Division"
-        android:layout_below="@+id/enter_roll_layout"
+        android:id="@+id/enter_sdt"
+        android:hint="Số điện thoại"
+        android:layout_below="@+id/enter_email"
         android:layout_height="wrap_content"
         android:layout_width="300dp"
         android:singleLine="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="25dp"
         android:autofillHints=""
         tools:ignore="TextFields" />
 
@@ -101,7 +72,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
-        android:layout_below="@+id/enter_div"
+        android:layout_below="@+id/enter_sdt"
         android:singleLine="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
@@ -122,10 +93,10 @@
         android:autofillHints="" />
 
     <Button
-        android:id="@+id/signup_button"
+        android:id="@+id/btn_dk"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Sign up"
+        android:text="Tiến hành nhận diện"
         android:background="@drawable/button_background_color"
         android:layout_below="@id/enter_cpassword"
         android:textColor="#FFFFFF"
