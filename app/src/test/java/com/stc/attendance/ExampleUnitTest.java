@@ -1,4 +1,4 @@
-package com.atharvakale.facerecognition;
+package com.stc.attendance;
 
 import org.junit.Test;
 
