@@ -15,6 +15,9 @@
         android:theme="@style/Theme.FaceRecognition.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name="com.stc.attendance.RecyclerviewAttendanceActivity"
+            android:exported="false" />
+        <activity
             android:name="com.stc.attendance.ProfileActivity"
             android:exported="false" />
         <activity

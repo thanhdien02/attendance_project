@@ -45,7 +45,7 @@ public interface ApiService {
 
 
     @GET("cham-cong")
-    Call<List<ChamCong>> getAllChamCong();
+    Call<List<ChamCong>> getAllChamCongs();
 
     @POST("cham-cong")
     Call<ChamCong> createChamCong(@Body ChamCong chamCong);

@@ -226,6 +226,7 @@
                         android:focusable="true">
 
                         <LinearLayout
+                            android:id="@+id/home_thongke"
                             android:orientation="vertical"
                             android:layout_height="match_parent"
                             android:layout_width="match_parent"
