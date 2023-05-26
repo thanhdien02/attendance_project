@@ -90,7 +90,6 @@ public class RegisterActivity extends AppCompatActivity {
 //                        Toast.makeText(getApplicationContext(), user1.getEmail() + " " + user1.getPassword(), Toast.LENGTH_SHORT).show();
                         Toast.makeText(getApplicationContext(), taiKhoan1.getName() + " \n" +
                                 "Thêm thông tin nhận diện thành công", Toast.LENGTH_SHORT).show();
-
                         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                         startActivity(intent);
                     }

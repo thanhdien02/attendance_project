@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/round_bg"
-        android:text="ACTIONS"
+        android:text="Thực hiện"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,7 +95,7 @@
             android:rotation="0"
             android:rotationX="0"
             android:rotationY="0"
-            android:text="Add Face"
+            android:text="Lấy ảnh"
             android:textAlignment="center"
             android:visibility="visible"
             tools:visibility="visible" />

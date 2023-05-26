@@ -14,8 +14,8 @@ public class ChamCong implements Serializable {
     private String id;
     private String maNhanVien;
     private String ten;
-    private Date ngayChamCong;
-    public ChamCong(String id, String maNhanVien, String ten, Date ngayChamCong) {
+    private String ngayChamCong;
+    public ChamCong(String id, String maNhanVien, String ten, String ngayChamCong) {
         this.id = id;
         this.maNhanVien = maNhanVien;
         this.ten = ten;
@@ -50,10 +50,10 @@ public class ChamCong implements Serializable {
     public void setTen(String ten) {
         this.ten = ten;
     }
-    public Date getNgayChamCong() {
+    public String getNgayChamCong() {
         return ngayChamCong;
     }
-    public void setNgayChamCong(Date ngayChamCong) {
+    public void setNgayChamCong(String ngayChamCong) {
         this.ngayChamCong = ngayChamCong;
     }
 

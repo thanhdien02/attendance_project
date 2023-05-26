@@ -77,6 +77,7 @@ import java.nio.MappedByteBuffer;
 import java.nio.ReadOnlyBufferException;
 import java.nio.channels.FileChannel;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -193,7 +194,13 @@ public class AttendanceActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "So 1:" + manhanvien, Toast.LENGTH_SHORT).show();
         String tennhanvien = fin.substring(0, begin - 1).trim();
         Toast.makeText(getApplicationContext(), "ten: " + tennhanvien, Toast.LENGTH_SHORT).show();
-        Date time = new Date();
+        LocalDateTime now = LocalDateTime.now();
+
+// Định nghĩa mẫu định dạng
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+
+// Format LocalDateTime thành chuỗi theo mẫu định dạng
+        String formattedDateTime = now.format(formatter);
 //
 //        Log.e("time: ",  time + "");
 //        Toast.makeText(getApplicationContext(), "dienthanhnguyen: " + time, Toast.LENGTH_SHORT).show();
@@ -205,7 +212,7 @@ public class AttendanceActivity extends AppCompatActivity {
         ChamCong chamCong = new ChamCong();
         chamCong.setMaNhanVien(manhanvien);
         chamCong.setTen(tennhanvien);
-        chamCong.setNgayChamCong(time);
+        chamCong.setNgayChamCong(formattedDateTime);
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 //            chamCong.setNgayChamCong(LocalDateTime.parse("2018-11-03T12:45:30"));
 //        }

@@ -20,8 +20,6 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.At
 
     private Context mContext;
 
-
-
     private List<ChamCong> mListChamCong = new ArrayList<>();
 
     public AttendanceAdapter(List<ChamCong> mListChamCong) {

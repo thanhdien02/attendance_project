@@ -25,18 +25,20 @@
             android:exported="true" />
         <activity
             android:name="com.stc.attendance.HomeActivity"
-            android:exported="true" />
-        <activity
-            android:name="com.stc.attendance.RegisterActivity"
-            android:exported="true" />
-        <activity
-            android:name="com.stc.attendance.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.stc.attendance.RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.stc.attendance.LoginActivity"
+            android:exported="true">
+
         </activity>
         <activity android:name="com.stc.attendance.MainActivity" />
         <activity

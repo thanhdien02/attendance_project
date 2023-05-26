@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/gradient1"
         android:minHeight="?attr/actionBarSize"
-        app:title="Home (TEC)"
+        app:title="Home"
         app:titleMarginStart="25dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
@@ -52,17 +52,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:text="teachername"
+                        android:text="Chấm Công"
                         android:textStyle="bold"
                         android:textColor="#FFFFFF"
-                        android:textSize="25dp" />
+                        android:textSize="35dp" />
 
                     <TextView
                         android:id="@+id/teach_dept"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:text="department"
+                        android:text=""
                         android:textColor="#FFFFFF"
                         android:textSize="18dp" />
 
@@ -71,7 +71,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:text="subject"
+                        android:text=""
                         android:textColor="#FFFFFF"
                         android:textSize="18dp" />
 
@@ -80,7 +80,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
-                        android:text="emaile"
+                        android:text=""
                         android:textColor="#FFFFFF"
                         android:textSize="18dp" />
                 </LinearLayout>
