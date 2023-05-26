@@ -147,8 +147,6 @@ public class AttendanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Cham con o day
-
                 Toast.makeText(AttendanceActivity.this, fin, Toast.LENGTH_SHORT).show();
 
                 AddChamCong();
@@ -170,13 +168,13 @@ public class AttendanceActivity extends AppCompatActivity {
                 cameraBind();
             }
         });
-        //Load model
+
         try {
             tfLite=new Interpreter(loadModelFile(AttendanceActivity.this,modelFile));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //Initialize Face Detector
+
         FaceDetectorOptions highAccuracyOpts =
                 new FaceDetectorOptions.Builder()
                         .setPerformanceMode(FaceDetectorOptions.PERFORMANCE_MODE_ACCURATE)
@@ -196,27 +194,14 @@ public class AttendanceActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "ten: " + tennhanvien, Toast.LENGTH_SHORT).show();
         LocalDateTime now = LocalDateTime.now();
 
-// Định nghĩa mẫu định dạng
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
-// Format LocalDateTime thành chuỗi theo mẫu định dạng
         String formattedDateTime = now.format(formatter);
-//
-//        Log.e("time: ",  time + "");
-//        Toast.makeText(getApplicationContext(), "dienthanhnguyen: " + time, Toast.LENGTH_SHORT).show();
-
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            time = LocalDateTime.now();
-//        }
 
         ChamCong chamCong = new ChamCong();
         chamCong.setMaNhanVien(manhanvien);
         chamCong.setTen(tennhanvien);
         chamCong.setNgayChamCong(formattedDateTime);
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            chamCong.setNgayChamCong(LocalDateTime.parse("2018-11-03T12:45:30"));
-//        }
-
 
         ApiService.apiService.createChamCong(chamCong)
                 .enqueue(new Callback<ChamCong>() {
@@ -277,7 +262,7 @@ public class AttendanceActivity extends AppCompatActivity {
             @Override
             public void analyze(@NonNull ImageProxy imageProxy) {
                 try {
-                    Thread.sleep(0);  //Camera preview refreshed every 10 millisec(adjust as required)
+                    Thread.sleep(0);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -297,19 +282,19 @@ public class AttendanceActivity extends AppCompatActivity {
                                             @Override
                                             public void onSuccess(List<Face> faces) {
                                                 if(faces.size()!=0) {
-                                                    Face face = faces.get(0); //Get first face from detected faces
+                                                    Face face = faces.get(0);
                                                     Bitmap frame_bmp = toBitmap(mediaImage);
                                                     int rot = imageProxy.getImageInfo().getRotationDegrees();
-                                                    //Adjust orientation of Face
+
                                                     Bitmap frame_bmp1 = rotateBitmap(frame_bmp, rot, false, false);
                                                     RectF boundingBox = new RectF(face.getBoundingBox());
-                                                    //Crop out bounding box from whole Bitmap(image)
+
                                                     Bitmap cropped_face = getCropBitmapByCPU(frame_bmp1, boundingBox);
                                                     if(flipX)
                                                         cropped_face = rotateBitmap(cropped_face, 0, flipX, false);
                                                     Bitmap scaled = getResizedBitmap(cropped_face, 112, 112);
                                                     if(start)
-                                                        recognizeImage(scaled); //Send scaled bitmap to create face embeddings.
+                                                        recognizeImage(scaled);
                                                 }
                                                 else
                                                 {
@@ -348,18 +333,18 @@ public class AttendanceActivity extends AppCompatActivity {
             for (int j = 0; j < inputSize; ++j) {
                 int pixelValue = intValues[i * inputSize + j];
                 if (isModelQuantized) {
-                    // Quantized model
+
                     imgData.put((byte) ((pixelValue >> 16) & 0xFF));
                     imgData.put((byte) ((pixelValue >> 8) & 0xFF));
                     imgData.put((byte) (pixelValue & 0xFF));
-                } else { // Float model
+                } else {
                     imgData.putFloat((((pixelValue >> 16) & 0xFF) - IMAGE_MEAN) / IMAGE_STD);
                     imgData.putFloat((((pixelValue >> 8) & 0xFF) - IMAGE_MEAN) / IMAGE_STD);
                     imgData.putFloat(((pixelValue & 0xFF) - IMAGE_MEAN) / IMAGE_STD);
                 }
             }
         }
-        //imgData is input to our model
+
         Object[] inputArray = {imgData};
         Map<Integer, Object> outputMap = new HashMap<>();
         embeedings = new float[1][OUTPUT_SIZE];
@@ -369,9 +354,9 @@ public class AttendanceActivity extends AppCompatActivity {
         String id = "0";
         String label = "?";
         if (registered.size() > 0) {
-            final List<Pair<String, Float>> nearest = findNearest(embeedings[0]);//Find 2 closest matching face
+            final List<Pair<String, Float>> nearest = findNearest(embeedings[0]);
             if (nearest.get(0) != null) {
-                final String name = nearest.get(0).first; //get name and distance of closest matching face
+                final String name = nearest.get(0).first;
                 distance_local = nearest.get(0).second;
                 if (developerMode)
                 {
@@ -382,7 +367,7 @@ public class AttendanceActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    if(distance_local<distance) //If distance between Closest found face is more than 1.000 ,then output UNKNOWN face.
+                    if(distance_local<distance)
                     {
                         reco_name.setText(name);
                         fin = name;
@@ -433,7 +418,6 @@ public class AttendanceActivity extends AppCompatActivity {
         Bitmap resultBitmap = Bitmap.createBitmap((int) cropRectF.width(),
                 (int) cropRectF.height(), Bitmap.Config.ARGB_8888);
         Canvas cavas = new Canvas(resultBitmap);
-        // draw background
         Paint paint = new Paint(Paint.FILTER_BITMAP_FLAG);
         paint.setColor(Color.WHITE);
         cavas.drawRect(
@@ -447,7 +431,6 @@ public class AttendanceActivity extends AppCompatActivity {
         }
         return resultBitmap;
     }
-
     private static Bitmap rotateBitmap(
             Bitmap bitmap, int rotationDegrees, boolean flipX, boolean flipY) {
         Matrix matrix = new Matrix();
@@ -471,9 +454,7 @@ public class AttendanceActivity extends AppCompatActivity {
         ByteBuffer vBuffer = image.getPlanes()[2].getBuffer(); // V
         int rowStride = image.getPlanes()[0].getRowStride();
         assert(image.getPlanes()[0].getPixelStride() == 1);
-
         int pos = 0;
-
         if (rowStride == width) { // likely
             yBuffer.get(nv21, 0, ySize);
             pos += ySize;
@@ -492,7 +473,6 @@ public class AttendanceActivity extends AppCompatActivity {
         assert(rowStride == image.getPlanes()[1].getRowStride());
         assert(pixelStride == image.getPlanes()[1].getPixelStride());
         if (pixelStride == 2 && rowStride == width && uBuffer.get(0) == vBuffer.get(1)) {
-            // maybe V an U planes overlap as per NV21, which means vBuffer[1] is alias of uBuffer[0]
             byte savePixel = vBuffer.get(1);
             try {
                 vBuffer.put(1, (byte)~savePixel);

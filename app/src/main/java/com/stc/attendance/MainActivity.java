@@ -49,6 +49,8 @@ import com.google.mlkit.vision.face.Face;
 import com.google.mlkit.vision.face.FaceDetection;
 import com.google.mlkit.vision.face.FaceDetector;
 import com.google.mlkit.vision.face.FaceDetectorOptions;
+import com.stc.attendance.model.ChamCong;
+import com.stc.attendance.model.TaiKhoan;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.view.PreviewView;
@@ -114,6 +116,10 @@ public class MainActivity extends AppCompatActivity {
     ProcessCameraProvider cameraProvider;
     private static final int MY_CAMERA_REQUEST_CODE = 100;
 
+    private TextView txtThongTin;
+
+    private Button btn_back;
+    String tonghop = "";
     String modelFile="mobile_face_net.tflite"; //model name
 
     private HashMap<String, SimilarityClassifier.Recognition> registered = new HashMap<>(); //saved Faces
@@ -137,10 +143,30 @@ public class MainActivity extends AppCompatActivity {
         recognize=findViewById(R.id.button3);
         camera_switch=findViewById(R.id.button5);
         actions=findViewById(R.id.button2);
+        btn_back = findViewById(R.id.btn_backm);
+
+        txtThongTin = findViewById(R.id.inf_nhanvien);
+        // Load du lieu
+        Bundle bundleReceive = getIntent().getExtras();
+
+        TaiKhoan tk =  (TaiKhoan) bundleReceive.get("NhanVien");
+
+        tonghop = tk.getName() + "_"+ tk.getMaNhanVien();
+        txtThongTin.setText(tonghop);
+
         textAbove_preview.setText("Recognized Face:");
         if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_REQUEST_CODE);
         }
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ManagerActivity.class);
+
+                startActivity(intent);
+            }
+        });
         //On-screen Action Button
         actions.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -268,10 +294,12 @@ public class MainActivity extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setTitle("Enter Name");
 
+
                 // Set up the input
             final EditText input = new EditText(context);
 
-            input.setInputType(InputType.TYPE_CLASS_TEXT );
+            input.setInputType(InputType.TYPE_CLASS_TEXT);
+            input.setText(tonghop);
             builder.setView(input);
 
                 // Set up the buttons

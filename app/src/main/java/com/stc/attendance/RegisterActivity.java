@@ -13,6 +13,7 @@ import com.atharvakale.facerecognition.R;
 import com.stc.attendance.api.ApiService;
 import com.stc.attendance.model.TaiKhoan;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,7 +61,6 @@ public class RegisterActivity extends AppCompatActivity {
             return;
 
         }
-
         if (!strPassword.equals(cfstrPassword))
         {
             Toast.makeText(this, "Không khẩu chưa trùng nhau", Toast.LENGTH_SHORT).show();
@@ -90,7 +90,12 @@ public class RegisterActivity extends AppCompatActivity {
 //                        Toast.makeText(getApplicationContext(), user1.getEmail() + " " + user1.getPassword(), Toast.LENGTH_SHORT).show();
                         Toast.makeText(getApplicationContext(), taiKhoan1.getName() + " \n" +
                                 "Thêm thông tin nhận diện thành công", Toast.LENGTH_SHORT).show();
+
                         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("NhanVien", (Serializable) taiKhoan1);
+                        intent.putExtras(bundle);
                         startActivity(intent);
                     }
 

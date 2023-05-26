@@ -15,6 +15,12 @@
         android:theme="@style/Theme.FaceRecognition.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name="com.stc.attendance.RecyclerviewUserActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.stc.attendance.ManagerActivity"
+            android:exported="true" />
+        <activity
             android:name="com.stc.attendance.RecyclerviewAttendanceActivity"
             android:exported="false" />
         <activity
@@ -37,9 +43,7 @@
             android:exported="true" />
         <activity
             android:name="com.stc.attendance.LoginActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity android:name="com.stc.attendance.MainActivity" />
         <activity
             android:name="com.stc.attendance.splash_screen"

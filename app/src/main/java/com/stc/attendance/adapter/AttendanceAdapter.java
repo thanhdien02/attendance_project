@@ -70,8 +70,4 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.At
             txtNgay = itemView.findViewById(R.id.rvNgay);
         }
     }
-
-
-
-
 }
