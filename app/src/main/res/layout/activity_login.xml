@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
-        app:srcCompat="@drawable/terna"
+        app:srcCompat="@drawable/editlogo"
         android:contentDescription="Todo" />
     <LinearLayout
         android:orientation="vertical"
@@ -75,7 +75,7 @@
                     android:layout_below="@id/enter_password"
                     android:layout_marginBottom="25dp"
                     android:layout_marginTop="35dp"
-                    android:background="@drawable/button_background_color"
+                    android:background="@color/teal_200"
                     android:text="Login"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp" />

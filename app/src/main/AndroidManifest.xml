@@ -15,6 +15,15 @@
         android:theme="@style/Theme.FaceRecognition.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name="com.stc.attendance.StatisticMonthActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.stc.attendance.SelectActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.stc.attendance.StatisticActivity"
+            android:exported="true" />
+        <activity
             android:name="com.stc.attendance.RecyclerviewUserActivity"
             android:exported="false" />
         <activity

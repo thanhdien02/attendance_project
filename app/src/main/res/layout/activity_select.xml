@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.stc.attendance.StatisticActivity">
+
+  <androidx.appcompat.widget.Toolbar
+      android:layout_width="match_parent"
+      android:layout_height="?attr/actionBarSize"
+      android:id="@+id/toolbarofcreatenote"
+      android:background="@color/colorPrimary">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="12dp"
+        android:textSize="20sp"
+        android:text="Lựa chọn thông kê"
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
+  </androidx.appcompat.widget.Toolbar>
+  <Button
+
+      android:id="@+id/tk_btn_day"
+      android:layout_marginTop="20dp"
+      android:layout_marginStart="20dp"
+      android:layout_marginEnd="20dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Thống kê theo ngày" />
+  <Button
+
+      android:id="@+id/tk_btn_month"
+      android:layout_marginStart="20dp"
+      android:layout_width="match_parent"
+      android:layout_marginEnd="20dp"
+      android:layout_height="wrap_content"
+      android:text="Thống kê theo tháng" />
+  <Button
+      android:id="@+id/tk_btn_year"
+      android:layout_marginStart="20dp"
+      android:layout_marginEnd="20dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Thống kê theo năm" />
+  <Button
+
+      android:id="@+id/tk_btn_salary"
+      android:layout_marginStart="20dp"
+      android:layout_marginEnd="20dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Tính lương" />
+
+
+
+</LinearLayout>

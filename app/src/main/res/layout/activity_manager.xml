@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/gradient1"
         android:minHeight="?attr/actionBarSize"
-        app:title="Home"
+        app:title="Back"
         app:titleMarginStart="25dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
@@ -36,7 +36,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/terna_white"/>
+                        android:src="@drawable/editlogo"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -121,7 +121,7 @@
                             android:layout_width="match_parent"
                             android:gravity="center">
                             <ImageView
-                                android:src="@drawable/backhome"
+                                android:src="@drawable/iconthongke"
                                 android:layout_height="70dp"
                                 android:layout_width="70dp"
                                 android:layout_gravity="center"/>
@@ -129,7 +129,7 @@
                                 android:id="@+id/TAButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Back Home"
+                                android:text="Thống kê"
                                 android:textAlignment="center"
                                 android:textSize="18dp"
                                 android:textStyle="bold"
