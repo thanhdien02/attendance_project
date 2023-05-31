@@ -11,7 +11,7 @@ import com.atharvakale.facerecognition.R;
 
 public class SelectActivity extends AppCompatActivity {
 
-    private Button btnDay, btnMonth, btnYear;
+    private Button btnDay, btnMonth, btnYear, btnSarary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,7 @@ public class SelectActivity extends AppCompatActivity {
         btnDay = findViewById(R.id.tk_btn_day);
         btnMonth = findViewById(R.id.tk_btn_month);
         btnYear = findViewById(R.id.tk_btn_year);
+        btnSarary = findViewById(R.id.tk_btn_salary);
 
         btnDay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +43,12 @@ public class SelectActivity extends AppCompatActivity {
         });
 
         btnYear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btnSarary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

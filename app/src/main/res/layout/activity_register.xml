@@ -56,6 +56,7 @@
     <EditText
         android:id="@+id/enter_email"
         android:hint="Email"
+        android:inputType="textEmailAddress"
         android:layout_below="@+id/enter_manv"
         android:layout_height="wrap_content"
         android:layout_width="300dp"
@@ -84,25 +85,12 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPassword"
+        android:inputType="number"
         android:layout_below="@+id/enter_sdt"
         android:singleLine="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
-        android:hint="Password"
-        android:autofillHints="" />
-
-    <EditText
-        android:id="@+id/enter_cpassword"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:singleLine="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:layout_below="@id/enter_password"
-        android:hint="Confirm password"
+        android:hint="Lương"
         android:autofillHints="" />
 
     <Button
@@ -111,7 +99,7 @@
         android:layout_height="wrap_content"
         android:text="Tiến hành nhận diện"
         android:background="@drawable/button_background_color"
-        android:layout_below="@id/enter_cpassword"
+        android:layout_below="@id/enter_password"
         android:textColor="#FFFFFF"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"

@@ -23,6 +23,17 @@ public class TaiKhoan implements Serializable {
     }
     // email không được trùng nhau
     private String email;
+
+    private Double luong;
+
+    public Double getLuong() {
+        return luong;
+    }
+
+    public void setLuong(Double luong) {
+        this.luong = luong;
+    }
+
     public String getId() {
         return id;
     }

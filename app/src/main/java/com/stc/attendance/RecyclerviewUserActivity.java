@@ -35,7 +35,6 @@ public class RecyclerviewUserActivity extends AppCompatActivity {
         rcvUser = findViewById(R.id.rcv_user);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rcvUser.setLayoutManager(linearLayoutManager);
-
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         rcvUser.addItemDecoration(dividerItemDecoration);
 
@@ -50,6 +49,7 @@ public class RecyclerviewUserActivity extends AppCompatActivity {
             public void onResponse(Call<List<TaiKhoan>> call, Response<List<TaiKhoan>> response) {
                 mlistUser = response.body();
                 adapter = new UserApdater(mlistUser);
+
                 rcvUser.setAdapter(adapter);
             }
 

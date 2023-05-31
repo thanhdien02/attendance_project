@@ -46,6 +46,7 @@ import com.google.mlkit.vision.face.Face;
 import com.google.mlkit.vision.face.FaceDetection;
 import com.google.mlkit.vision.face.FaceDetector;
 import com.google.mlkit.vision.face.FaceDetectorOptions;
+import com.stc.attendance.adapter.AttendanceAdapter;
 import com.stc.attendance.api.ApiService;
 import com.stc.attendance.model.ChamCong;
 import com.stc.attendance.model.TaiKhoan;
@@ -143,6 +144,7 @@ public class AttendanceActivity extends AppCompatActivity {
             requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_REQUEST_CODE);
         }
 
+
         actions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -189,9 +191,9 @@ public class AttendanceActivity extends AppCompatActivity {
         int begin = fin.length() - 8;
 
         String manhanvien = fin.substring(begin).trim();
-        Toast.makeText(getApplicationContext(), "So 1:" + manhanvien, Toast.LENGTH_SHORT).show();
+        Toast.makeText(AttendanceActivity.this, "So 1:" + manhanvien, Toast.LENGTH_SHORT).show();
         String tennhanvien = fin.substring(0, begin - 1).trim();
-        Toast.makeText(getApplicationContext(), "ten: " + tennhanvien, Toast.LENGTH_SHORT).show();
+        Toast.makeText(AttendanceActivity.this, "ten: " + tennhanvien, Toast.LENGTH_SHORT).show();
         LocalDateTime now = LocalDateTime.now();
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
@@ -207,17 +209,24 @@ public class AttendanceActivity extends AppCompatActivity {
                 .enqueue(new Callback<ChamCong>() {
                     @Override
                     public void onResponse(Call<ChamCong> call, Response<ChamCong> response) {
-                        ChamCong chamCong1 = response.body();
-                        Intent intent = new Intent(AttendanceActivity.this, ProfileActivity.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("Info", (Serializable) chamCong1);
-                        intent.putExtras(bundle);
-                        startActivity(intent);
+                        try {
+                            ChamCong chamCong1 = response.body();
+                            // get all list chamcong. Loc no ra lai bang vong lap
+                            Intent intent = new Intent(AttendanceActivity.this, ProfileActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("Info", (Serializable) chamCong1);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                        }catch (Exception e)
+                        {
+                            Toast.makeText(AttendanceActivity.this, "Mỗi nhân viên mỗi ngày chỉ chấm công 1 lần !!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                     @Override
                     public void onFailure(Call<ChamCong> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(), "Thất bại", Toast.LENGTH_SHORT).show();
-                        call.cancel();
+
+                        Toast.makeText(AttendanceActivity.this, "Email đã tồn tại vui lòng chọn Email khác", Toast.LENGTH_SHORT).show();
+
                     }
                 });
     }
