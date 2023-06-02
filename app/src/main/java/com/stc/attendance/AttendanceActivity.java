@@ -148,9 +148,6 @@ public class AttendanceActivity extends AppCompatActivity {
         actions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Toast.makeText(AttendanceActivity.this, fin, Toast.LENGTH_SHORT).show();
-
                 AddChamCong();
             }
         });
@@ -212,6 +209,8 @@ public class AttendanceActivity extends AppCompatActivity {
                         try {
                             ChamCong chamCong1 = response.body();
                             // get all list chamcong. Loc no ra lai bang vong lap
+                            Toast.makeText(AttendanceActivity.this, chamCong1.getTen() + " \n" +
+                                    "Thêm thông tin thành công", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(AttendanceActivity.this, ProfileActivity.class);
                             Bundle bundle = new Bundle();
                             bundle.putSerializable("Info", (Serializable) chamCong1);

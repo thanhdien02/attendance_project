@@ -127,6 +127,7 @@ public class StatisticMonthActivity extends AppCompatActivity {
                     String[] arr = ngay.split("/");
                     int m2 = Integer.parseInt(arr[1]);
                     Toast.makeText(StatisticMonthActivity.this,  arr[0].toString() + "  - " + arr[1].toString(), Toast.LENGTH_SHORT).show();
+                    String nam = arr[2].substring(0, 4);
                     if(m1 == m2)
                     {
                         ls.add(mlistAtt.get(i));

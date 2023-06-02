@@ -90,7 +90,7 @@
         android:singleLine="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
-        android:hint="Lương"
+        android:hint="Lương ngày"
         android:autofillHints="" />
 
     <Button

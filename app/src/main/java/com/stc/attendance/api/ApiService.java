@@ -3,6 +3,7 @@ package com.stc.attendance.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.stc.attendance.model.ChamCong;
+import com.stc.attendance.model.Luong;
 import com.stc.attendance.model.TaiKhoan;
 import java.util.List;
 import retrofit2.Call;
@@ -23,7 +24,7 @@ public interface ApiService {
             .setDateFormat("yyyy-MM-dd'T'HH:mm:ssz")
             .create();
     ApiService apiService = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.105:8080/rest/")
+            .baseUrl("http://192.168.1.3:8080/rest/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiService.class);
@@ -58,5 +59,22 @@ public interface ApiService {
 
     @DELETE("cham-cong/{id}")
     Call<ChamCong> deleteAttendance(@Path("id") int id);
+
+
+
+    @GET("luong")
+    Call<List<Luong>> getAllSalary();
+
+    @POST("luong")
+    Call<Luong> createSalary(@Body Luong luong);
+
+    @GET("luong/{id}")
+    Call<Luong> getSalaryById(@Path("id") int id);
+
+    @PUT("luong/{id}")
+    Call<Luong> updateSalary(@Path("id") int id, @Body Luong luong);
+
+    @DELETE("luong/{id}")
+    Call<Luong> deleteSalary(@Path("id") int id);
 
 }

@@ -81,9 +81,7 @@ public class UserApdater  extends RecyclerView.Adapter<UserApdater.UserViewHolde
                             case 0:
                                 Toast.makeText(view.getContext(), "Mot", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(view.getContext(), SalaryCalculationActivity.class);
-                                intent.putExtra("name", taiKhoan.getName());
-                                intent.putExtra("manv", taiKhoan.getMaNhanVien());
-                                intent.putExtra("luong", taiKhoan.getLuong());
+                                intent.putExtra("taikhoan", taiKhoan);
                                 ((Activity) view.getContext()).startActivityForResult(intent, 1);
                                 break;
                             case 1:
