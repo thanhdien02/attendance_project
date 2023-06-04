@@ -101,7 +101,8 @@ public class StatisticActivity extends AppCompatActivity {
                     int m2 = Integer.parseInt(arr[1]);
                     Toast.makeText(StatisticActivity.this,  arr[0].toString() + "  - " + arr[1].toString(), Toast.LENGTH_SHORT).show();
                     String nam = arr[2].substring(0, 4);
-                    if(arr[0].toString().equals(day) && m1 == m2 && Integer.parseInt(nam) == Integer.parseInt(year))
+
+                    if(Integer.parseInt(arr[0]) == Integer.parseInt(day) && m1 == m2 && Integer.parseInt(nam) == Integer.parseInt(year))
                     {
                         ls.add(mlistAtt.get(i));
                     }

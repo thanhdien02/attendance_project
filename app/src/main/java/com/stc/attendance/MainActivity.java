@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ManagerActivity.class);
+                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
 
                 startActivity(intent);
             }

@@ -211,43 +211,7 @@
                         </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cdEA"
-                        android:layout_height="150dp"
-                        android:layout_width="150dp"
-                        android:clickable="true"
-                        android:foreground="?android:attr/selectableItemBackground"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="10dp"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="center_horizontal"
-                        android:focusable="true">
 
-                        <LinearLayout
-                            android:id="@+id/home_thongke"
-                            android:orientation="vertical"
-                            android:layout_height="match_parent"
-                            android:layout_width="match_parent"
-                            android:gravity="center">
-                            <ImageView
-                                android:src="@drawable/analyse"
-                                android:layout_height="70dp"
-                                android:layout_width="70dp"
-                                android:layout_gravity="center"/>
-                            <TextView
-                                android:id="@+id/exit"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Thống kê"
-                                android:textAlignment="center"
-                                android:textSize="18dp"
-                                android:textStyle="bold"
-                                />
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
 
                 </GridLayout>
 

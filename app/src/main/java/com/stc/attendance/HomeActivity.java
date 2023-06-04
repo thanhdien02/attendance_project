@@ -25,8 +25,6 @@ public class HomeActivity extends AppCompatActivity {
         Att = findViewById(R.id.h_ad);
 
         Ls = findViewById(R.id.h_ls);
-
-        thongke = findViewById(R.id.home_thongke);
         Add_Emp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,14 +45,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, RecyclerviewAttendanceActivity.class);
-
-                startActivity(intent);
-            }
-        });
-        thongke.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
 
                 startActivity(intent);
             }

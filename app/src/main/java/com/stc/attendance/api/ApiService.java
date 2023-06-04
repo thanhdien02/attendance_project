@@ -24,7 +24,7 @@ public interface ApiService {
             .setDateFormat("yyyy-MM-dd'T'HH:mm:ssz")
             .create();
     ApiService apiService = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.3:8080/rest/")
+            .baseUrl("https://attendance-api.herokuapp.com/rest/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiService.class);
